@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "074861541B6C45D900798B19"
-               BuildableName = "HKArc.app"
-               BlueprintName = "HKArc"
-               ReferencedContainer = "container:HKArc.xcodeproj">
+               BuildableName = "HKShowerDetection.app"
+               BlueprintName = "HKShowerDetection"
+               ReferencedContainer = "container:HKShowerDetection.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -29,9 +29,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "074861691B6C45D900798B19"
-               BuildableName = "HKArcTests.xctest"
-               BlueprintName = "HKArcTests"
-               ReferencedContainer = "container:HKArc.xcodeproj">
+               BuildableName = "HKShowerDetectionTests.xctest"
+               BlueprintName = "HKShowerDetectionTests"
+               ReferencedContainer = "container:HKShowerDetection.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -47,9 +47,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "074861691B6C45D900798B19"
-               BuildableName = "HKArcTests.xctest"
-               BlueprintName = "HKArcTests"
-               ReferencedContainer = "container:HKArc.xcodeproj">
+               BuildableName = "HKShowerDetectionTests.xctest"
+               BlueprintName = "HKShowerDetectionTests"
+               ReferencedContainer = "container:HKShowerDetection.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -57,9 +57,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "074861541B6C45D900798B19"
-            BuildableName = "HKArc.app"
-            BlueprintName = "HKArc"
-            ReferencedContainer = "container:HKArc.xcodeproj">
+            BuildableName = "HKShowerDetection.app"
+            BlueprintName = "HKShowerDetection"
+            ReferencedContainer = "container:HKShowerDetection.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -77,9 +77,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "074861541B6C45D900798B19"
-            BuildableName = "HKArc.app"
-            BlueprintName = "HKArc"
-            ReferencedContainer = "container:HKArc.xcodeproj">
+            BuildableName = "HKShowerDetection.app"
+            BlueprintName = "HKShowerDetection"
+            ReferencedContainer = "container:HKShowerDetection.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -96,9 +96,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "074861541B6C45D900798B19"
-            BuildableName = "HKArc.app"
-            BlueprintName = "HKArc"
-            ReferencedContainer = "container:HKArc.xcodeproj">
+            BuildableName = "HKShowerDetection.app"
+            BlueprintName = "HKShowerDetection"
+            ReferencedContainer = "container:HKShowerDetection.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

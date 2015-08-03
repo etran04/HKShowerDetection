@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:HKArc.xcodeproj">
+      location = "self:/Users/Eric/Desktop/HKArc/HKShowerDetection.xcodeproj">
    </FileRef>
 </Workspace>

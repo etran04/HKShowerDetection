@@ -21,13 +21,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		074861551B6C45D900798B19 /* HKArc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HKArc.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		074861551B6C45D900798B19 /* HKShowerDetection.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HKShowerDetection.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		074861591B6C45D900798B19 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0748615A1B6C45D900798B19 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0748615C1B6C45D900798B19 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		074861611B6C45D900798B19 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		074861641B6C45D900798B19 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		0748616A1B6C45D900798B19 /* HKArcTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HKArcTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		0748616A1B6C45D900798B19 /* HKShowerDetectionTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HKShowerDetectionTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0748616F1B6C45D900798B19 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		074861701B6C45D900798B19 /* HKArcTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HKArcTests.swift; sourceTree = "<group>"; };
 		0748617A1B6C45EC00798B19 /* Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
@@ -82,8 +82,8 @@
 		074861561B6C45D900798B19 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				074861551B6C45D900798B19 /* HKArc.app */,
-				0748616A1B6C45D900798B19 /* HKArcTests.xctest */,
+				074861551B6C45D900798B19 /* HKShowerDetection.app */,
+				0748616A1B6C45D900798B19 /* HKShowerDetectionTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -149,9 +149,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		074861541B6C45D900798B19 /* HKArc */ = {
+		074861541B6C45D900798B19 /* HKShowerDetection */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 074861741B6C45D900798B19 /* Build configuration list for PBXNativeTarget "HKArc" */;
+			buildConfigurationList = 074861741B6C45D900798B19 /* Build configuration list for PBXNativeTarget "HKShowerDetection" */;
 			buildPhases = (
 				074861511B6C45D900798B19 /* Sources */,
 				074861521B6C45D900798B19 /* Frameworks */,
@@ -161,14 +161,14 @@
 			);
 			dependencies = (
 			);
-			name = HKArc;
+			name = HKShowerDetection;
 			productName = HKArc;
-			productReference = 074861551B6C45D900798B19 /* HKArc.app */;
+			productReference = 074861551B6C45D900798B19 /* HKShowerDetection.app */;
 			productType = "com.apple.product-type.application";
 		};
-		074861691B6C45D900798B19 /* HKArcTests */ = {
+		074861691B6C45D900798B19 /* HKShowerDetectionTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 074861771B6C45D900798B19 /* Build configuration list for PBXNativeTarget "HKArcTests" */;
+			buildConfigurationList = 074861771B6C45D900798B19 /* Build configuration list for PBXNativeTarget "HKShowerDetectionTests" */;
 			buildPhases = (
 				074861661B6C45D900798B19 /* Sources */,
 				074861671B6C45D900798B19 /* Frameworks */,
@@ -178,9 +178,9 @@
 			);
 			dependencies = (
 			);
-			name = HKArcTests;
+			name = HKShowerDetectionTests;
 			productName = HKArcTests;
-			productReference = 0748616A1B6C45D900798B19 /* HKArcTests.xctest */;
+			productReference = 0748616A1B6C45D900798B19 /* HKShowerDetectionTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -202,7 +202,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 074861501B6C45D900798B19 /* Build configuration list for PBXProject "HKArc" */;
+			buildConfigurationList = 074861501B6C45D900798B19 /* Build configuration list for PBXProject "HKShowerDetection" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -215,8 +215,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				074861541B6C45D900798B19 /* HKArc */,
-				074861691B6C45D900798B19 /* HKArcTests */,
+				074861541B6C45D900798B19 /* HKShowerDetection */,
+				074861691B6C45D900798B19 /* HKShowerDetectionTests */,
 			);
 		};
 /* End PBXProject section */
@@ -367,7 +367,7 @@
 					"$(PROJECT_DIR)/ACRCloud-ios-sdk-1.1.0/ACRCloudLibraies",
 					"$(PROJECT_DIR)/ACRCloudLibraies",
 				);
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = HKShowerDetection;
 				SWIFT_OBJC_BRIDGING_HEADER = "HKArc/Bridging-Header.h";
 			};
 			name = Debug;
@@ -385,7 +385,7 @@
 					"$(PROJECT_DIR)/ACRCloud-ios-sdk-1.1.0/ACRCloudLibraies",
 					"$(PROJECT_DIR)/ACRCloudLibraies",
 				);
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = HKShowerDetection;
 				SWIFT_OBJC_BRIDGING_HEADER = "HKArc/Bridging-Header.h";
 			};
 			name = Release;
@@ -404,7 +404,7 @@
 				);
 				INFOPLIST_FILE = HKArcTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = HKShowerDetectionTests;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HKArc.app/HKArc";
 			};
 			name = Debug;
@@ -419,7 +419,7 @@
 				);
 				INFOPLIST_FILE = HKArcTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = HKShowerDetectionTests;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HKArc.app/HKArc";
 			};
 			name = Release;
@@ -427,7 +427,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		074861501B6C45D900798B19 /* Build configuration list for PBXProject "HKArc" */ = {
+		074861501B6C45D900798B19 /* Build configuration list for PBXProject "HKShowerDetection" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				074861721B6C45D900798B19 /* Debug */,
@@ -436,7 +436,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		074861741B6C45D900798B19 /* Build configuration list for PBXNativeTarget "HKArc" */ = {
+		074861741B6C45D900798B19 /* Build configuration list for PBXNativeTarget "HKShowerDetection" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				074861751B6C45D900798B19 /* Debug */,
@@ -445,7 +445,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		074861771B6C45D900798B19 /* Build configuration list for PBXNativeTarget "HKArcTests" */ = {
+		074861771B6C45D900798B19 /* Build configuration list for PBXNativeTarget "HKShowerDetectionTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				074861781B6C45D900798B19 /* Debug */,

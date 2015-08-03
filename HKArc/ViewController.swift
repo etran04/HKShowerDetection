@@ -18,7 +18,6 @@ class ViewController: UIViewController {
     
     let config = ACRCloudConfig()
     var client: ACRCloudRecognition!
-    var startTime: NSTimeInterval!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -99,13 +98,6 @@ class ViewController: UIViewController {
             
         })
 
-    }
-    
-    func getCurrentTime() -> String {
-        let date = NSDate()
-        let formatter = NSDateFormatter()
-        formatter.timeStyle = NSDateFormatterStyle.ShortStyle
-        return formatter.stringFromDate(date);
     }
     
     /* Callback method for handling the change in volume */
