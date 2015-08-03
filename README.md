@@ -10,4 +10,4 @@ Used in use case scenario 2 of IoT demo.
 
 Features implemented in application 
 -------
-Able to confirm if the shower is running due by running background noise in comparison to ACRCloud database of custom files.
+Able to confirm if the shower is running by checking background noise in comparison to ACRCloud database of custom files.
