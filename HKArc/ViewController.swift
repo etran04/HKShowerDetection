@@ -85,7 +85,7 @@ class ViewController: UIViewController {
                 else if json["status"]["msg"] == "Success" {
                     if json["metadata"]["custom_files"][0]["audio_id"] == "shower_running" {
                         // Set success label!
-                        self.successLabel.text = "I hear the shower!"
+                        self.successLabel.text = "I heard the shower!"
                         
                         // Stop recording
                         self.client.stopRecordRec()
