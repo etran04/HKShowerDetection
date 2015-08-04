@@ -84,29 +84,25 @@ class ShowerSensorViewController: UIViewController {
                 }
                 else if json["status"]["msg"] == "Success" {
                     if json["metadata"]["custom_files"][0]["audio_id"] == "shower_running" {
-                        // Set success label!
-                        self.successLabel.text = "I heard the shower!"
-                        
-                        // Stop recording
+                        // Heard shower noise, stop recording
                         self.client.stopRecordRec()
                         
                         // Send event to Harman IoT Cloud to start timer for shower (300 seconds)
-                        var showerConfig = PFObject(className: "ShowerConfig")
-                        showerConfig["timeTillAlert"] = 300
-                        
-                        showerConfig.saveInBackgroundWithBlock(
-                            { bool, error in
-                                if bool {
-                                    println("saved!")
-                                }else {
-                                    println("failed!")
-                                }
-                        })
+                        var currentUser = PFUser.currentUser()?.username
+                        PFCloud.callFunctionInBackground("showerStarted", withParameters: ["username":currentUser!]) {
+                            (response: AnyObject?, error: NSError?) -> Void in
+                            if error != nil {
+                                println("error with triggering event")
+                            } else {
+                                println("triggered event in the cloud!")
+                                // Set success label!
+                                self.successLabel.text = "I heard the shower!"
+                            }
+                        }
                     }
                 }
             }
-            
-            
+    
         })
 
     }

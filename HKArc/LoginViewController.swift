@@ -19,6 +19,12 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Skips login screen if user already logged in previously
+        var currentUser = PFUser.currentUser()
+        if currentUser != nil {
+            self.performSegueWithIdentifier("loginSegue", sender: self)
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -68,13 +74,24 @@ class LoginViewController: UIViewController {
         user.password = passwordField.text
         
         user.signUpInBackgroundWithBlock { (succeded: Bool, error: NSError?) -> Void in
-            if let error = error {
-                let errorString = error.userInfo?["error"] as? String
-                let alert = UIAlertController(title: "Username Taken", message: errorString, preferredStyle: UIAlertControllerStyle.Alert)
-                let ok = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil)
-                alert.addAction(ok)
-                self.presentViewController(alert, animated: true, completion: nil)
+            if succeded {
+                let installation = PFInstallation.currentInstallation()
+                installation["user"] = user
+                self.performSegueWithIdentifier("loginSegue", sender: self)
+                installation.saveInBackgroundWithBlock({ (success, error) -> Void in
+                    
+                })
+            }
+            else {
+                if let error = error {
+                    let errorString = error.userInfo?["error"] as? String
+                    let alert = UIAlertController(title: "Username Taken", message: errorString, preferredStyle: UIAlertControllerStyle.Alert)
+                    let ok = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil)
+                    alert.addAction(ok)
+                    self.presentViewController(alert, animated: true, completion: nil)
+                }
             }
         }
     }
+    
 }

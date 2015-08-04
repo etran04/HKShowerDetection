@@ -29,6 +29,7 @@
 		074861C01B6C4AFC00798B19 /* libACRCloud_IOS_SDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 074861BF1B6C4AFC00798B19 /* libACRCloud_IOS_SDK.a */; };
 		074861C61B6FE21400798B19 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 074861C51B6FE21400798B19 /* Main.storyboard */; };
 		0748622D1B6FEBFE00798B19 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0748622C1B6FEBFE00798B19 /* SwiftyJSON.swift */; };
+		079867F61B716F3700307799 /* ParseUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 079867F51B716F3700307799 /* ParseUI.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,6 +63,7 @@
 		074861BF1B6C4AFC00798B19 /* libACRCloud_IOS_SDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libACRCloud_IOS_SDK.a; sourceTree = "<group>"; };
 		074861C51B6FE21400798B19 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		0748622C1B6FEBFE00798B19 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
+		079867F51B716F3700307799 /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseUI.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +77,7 @@
 				073BD1151B714138006C0588 /* StoreKit.framework in Frameworks */,
 				073BD1131B714125006C0588 /* QuartzCore.framework in Frameworks */,
 				073BD1111B71411E006C0588 /* CoreLocation.framework in Frameworks */,
+				079867F61B716F3700307799 /* ParseUI.framework in Frameworks */,
 				073BD10F1B714118006C0588 /* CoreGraphics.framework in Frameworks */,
 				073BD10D1B714111006C0588 /* CFNetwork.framework in Frameworks */,
 				074861B41B6C466B00798B19 /* AudioToolbox.framework in Frameworks */,
@@ -100,6 +103,7 @@
 		073BD1071B7140B2006C0588 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				079867F51B716F3700307799 /* ParseUI.framework */,
 				073BD1081B7140E2006C0588 /* Parse.framework */,
 				073BD10A1B7140E7006C0588 /* Bolts.framework */,
 				073BD11A1B714155006C0588 /* libsqlite3.dylib */,
