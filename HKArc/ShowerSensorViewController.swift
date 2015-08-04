@@ -9,7 +9,7 @@
 import UIKit
 import Parse
 
-class ViewController: UIViewController {
+class ShowerSensorViewController: UIViewController {
 
     @IBOutlet weak var volumeLabel: UILabel!
     @IBOutlet weak var stopBtn: UIButton!
