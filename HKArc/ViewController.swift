@@ -35,8 +35,8 @@ class ViewController: UIViewController {
     /* Initializes the ACR recorder and starts recording */
     func initACRRecorder() {
         
-        config.accessKey = "133d1cb76704e1af96e93463ffb10c55"
-        config.accessSecret = "x6w2pFiCnLB9H0Lt8SDfLTvJmiR3vdhuUz9NjIGr"
+        config.accessKey = "754a02bc6223fc2403f260aadbe32ae8"
+        config.accessSecret = "Q7TD0rS32ZRViJf1UR8JKBb4ZctoIwkx5ug148Rr"
         config.host = "ap-southeast-1.api.acrcloud.com"
         config.recMode = rec_mode_remote
         config.audioType = "recording"
