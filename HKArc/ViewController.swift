@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Parse
 
 class ViewController: UIViewController {
 
@@ -89,8 +90,18 @@ class ViewController: UIViewController {
                         // Stop recording
                         self.client.stopRecordRec()
                         
-                        // Send event to Harman IoT Cloud to start timer for shower (<5 minutes)
-                        // Insert code here...
+                        // Send event to Harman IoT Cloud to start timer for shower (300 seconds)
+                        var showerConfig = PFObject(className: "ShowerConfig")
+                        showerConfig["timeTillAlert"] = 300
+                        
+                        showerConfig.saveInBackgroundWithBlock(
+                            { bool, error in
+                                if bool {
+                                    println("saved!")
+                                }else {
+                                    println("failed!")
+                                }
+                        })
                     }
                 }
             }
