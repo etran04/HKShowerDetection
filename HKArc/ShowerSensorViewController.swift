@@ -11,6 +11,7 @@ import Parse
 
 class ShowerSensorViewController: UIViewController {
 
+    @IBOutlet weak var logoutBtn: UIButton!
     @IBOutlet weak var volumeLabel: UILabel!
     @IBOutlet weak var stopBtn: UIButton!
     @IBOutlet weak var resultView: UITextView!
@@ -86,25 +87,52 @@ class ShowerSensorViewController: UIViewController {
                     if json["metadata"]["custom_files"][0]["audio_id"] == "shower_running" {
                         // Heard shower noise, stop recording
                         self.client.stopRecordRec()
+                        // Set success label!
+                        self.successLabel.text = "I heard the shower!"
+                        
+                        // Query for user, and then his/her shower configuration
+                        var username = PFUser.currentUser()?.username
+                        //println("Current user is \(username)")
+                        var userQuery = PFUser.query()
+                        userQuery!.whereKey("username", equalTo: username!)
+                        userQuery!.getFirstObjectInBackgroundWithBlock {
+                            (user: PFObject?, error: NSError?) -> Void in
+                            if error != nil || user == nil {
+                                println("The getFirstObject request failed.")
+                            } else {
+                                // The find succeeded.
+                                let showerConfigID = (user!["showerConfig"] as! PFObject).objectId
+                                var showerQuery = PFQuery(className: "ShowerConfig")
+                                showerQuery.getObjectInBackgroundWithId(showerConfigID!) {
+                                    (config: PFObject?, error: NSError?) -> Void in
+                                    if error == nil && config != nil {
+                                        var timeTillAlert: AnyObject? = config?.objectForKey("timeTillAlert")
+                                        //var timer = NSTimer.scheduledTimerWithTimeInterval(timeTillAlert, target: self, selector: Selector("update"), userInfo: nil, repeats: true)
+                                    }
+                                }
+                            }
+                        }
                         
                         // Send event to Harman IoT Cloud to start timer for shower (300 seconds)
-                        var currentUser = PFUser.currentUser()?.username
-                        PFCloud.callFunctionInBackground("showerStarted", withParameters: ["username":currentUser!]) {
+                        /*PFCloud.callFunctionInBackground("showerStarted", withParameters: ["username":username!]) {
                             (response: AnyObject?, error: NSError?) -> Void in
                             if error != nil {
                                 println("error with triggering event")
                             } else {
                                 println("triggered event in the cloud!")
-                                // Set success label!
-                                self.successLabel.text = "I heard the shower!"
                             }
-                        }
+                        }*/
                     }
                 }
             }
     
         })
 
+    }
+    
+    /* Callback for when logout button is pressed */
+    @IBAction func logoutPressed(sender: UIButton) {
+        PFUser.logOut()
     }
     
     /* Callback method for handling the change in volume */
