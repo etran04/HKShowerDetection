@@ -21,14 +21,12 @@ class ShowerSensorViewController: UIViewController {
     @IBOutlet weak var stateLabel: UILabel!
     @IBOutlet weak var successLabel: UILabel!
     
-    var showerStarted: Bool!
-    var timeToAlert: Int!
-    
-    var timer: NSTimer!
-    var startTime: CFAbsoluteTime!
-    
     let config = ACRCloudConfig()
     var client: ACRCloudRecognition!
+    var showerStarted: Bool!
+    var timeToAlert: Int!
+    var timer: NSTimer!
+    var startTime: NSTimeInterval!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -115,14 +113,13 @@ class ShowerSensorViewController: UIViewController {
                     successLabel.text = "Did you start the shower?"
                 }
                 else {
-                    // Shower stopped
-                    successLabel.text = "Nice you finished the shower!"
-                    
                     // Calculated how long shower occured for
-                    var endTime = CFAbsoluteTimeGetCurrent()
-                    var elapseTime = endTime - startTime
+                    var elapseTime = CACurrentMediaTime() - startTime
                     var elapseInt = Int(elapseTime)
                     println("You showered for \(elapseInt) seconds total.")
+                    
+                    // Shower stopped labeled
+                    successLabel.text = "You showered for \(elapseInt) seconds!"
                     
                     // Stop recording
                     client.stopRecordRec()
@@ -135,53 +132,57 @@ class ShowerSensorViewController: UIViewController {
                 }
             }
             else if json["status"]["msg"] == "Success" {
-                firstTimeHearShower(json)
+                hearShower(json)
             }
         }
     }
     
     /* Helper function for what to do after app recoginizes shower sound for the first time */
-    func firstTimeHearShower (json: JSON) {
+    func hearShower (json: JSON) {
         if json["metadata"]["custom_files"][0]["audio_id"] == "shower_running" {
             
             // Set success label!
             successLabel.text = "I hear you're showering!"
             
-            // Query for user, and then his/her shower configuration
-            var username = PFUser.currentUser()?.username
-            var userQuery = PFUser.query()
-            userQuery!.whereKey("username", equalTo: username!)
-            userQuery!.getFirstObjectInBackgroundWithBlock {
-                
-                (user: PFObject?, error: NSError?) -> Void in
-                if error != nil || user == nil {
-                    println("The getFirstObject request failed.")
-                } else {
-                    // The find succeeded.
-                    let showerConfigID = (user!["showerConfig"] as! PFObject).objectId
-                    var showerQuery = PFQuery(className: "ShowerConfig")
-                    showerQuery.getObjectInBackgroundWithId(showerConfigID!) {
-                        (config: PFObject?, error: NSError?) -> Void in
-                        if error == nil && config != nil {
-                            var timeTillAlert: AnyObject? = config?.objectForKey("timeTillAlert")
-                            self.createTimer(timeTillAlert as! Int)
-                        }
-                    }
-                }
-                
+            // Check if first time hear shower or not
+            if (!showerStarted) {
+                prepTimer()
+            }
+            else {
+                println("Currently in the shower... ")
             }
         }
     }
-    
+
+    /* Helper methodfor querying for the user to get shower config data, and starting the timer */
+    func prepTimer() {
+        // Query for user, and then his/her shower configuration
+        var username = PFUser.currentUser()?.username
+        var userQuery = PFUser.query()
+        userQuery!.whereKey("username", equalTo: username!)
+        userQuery!.getFirstObjectInBackgroundWithBlock {
+            (user: PFObject?, error: NSError?) -> Void in
+            if error == nil && user != nil {
+                // Found the user
+                let showerConfigID = (user!["showerConfig"] as! PFObject).objectId
+                var showerQuery = PFQuery(className: "ShowerConfig")
+                showerQuery.getObjectInBackgroundWithId(showerConfigID!) {
+                    (config: PFObject?, error: NSError?) -> Void in
+                    if error == nil && config != nil {
+                        var timeTillAlert: AnyObject? = config?.objectForKey("timeTillAlert")
+                        self.createTimer(timeTillAlert as! Int)
+                    }
+                }
+            }
+        }
+    }
+
     /* Helper function for creating and starting timer in the closure */
     func createTimer(secondsTillAlert: Int) {
-        if (!showerStarted) {
             showerStarted = true
-            startTime = CFAbsoluteTimeGetCurrent()
+            startTime = CACurrentMediaTime()
             timeToAlert = secondsTillAlert
             timer = NSTimer.scheduledTimerWithTimeInterval(NSTimeInterval(secondsTillAlert), target: self, selector: "triggerEventInCloud", userInfo: nil, repeats: false)
-        }
-        
     }
     
     /* Called when timer has hit user shower config time
@@ -191,13 +192,14 @@ class ShowerSensorViewController: UIViewController {
         
         var username = PFUser.currentUser()?.username;
         
-        // Send event to Harman IoT Cloud to start timer for shower (300 seconds)
+        // Send event to Harman IoT Cloud to send a push notification to HKRules
         PFCloud.callFunctionInBackground("showerStarted", withParameters: ["username":username!]) {
             (response: AnyObject?, error: NSError?) -> Void in
             if error != nil {
                 println("Error with triggering event.")
             } else {
                 println("Triggered event in the cloud!")
+                println("Expecting push notification on HKRules app...")
             }
         }
         
