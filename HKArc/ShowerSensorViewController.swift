@@ -119,7 +119,7 @@ class ShowerSensorViewController: UIViewController {
                     var endTime = CFAbsoluteTimeGetCurrent()
                     var elapseTime = endTime - startTime
                     var elapseInt = Int(elapseTime)
-                    println("You showered for \(elapseInt)")
+                    println("You showered for \(elapseInt) seconds.")
                     client.stopRecordRec()
                     
                     if elapseInt < timeToAlert {
@@ -137,8 +137,9 @@ class ShowerSensorViewController: UIViewController {
     /* Helper function for what to do after app recoginizes shower sound for the first time */
     func firstTimeHearShower (json: JSON) {
         if json["metadata"]["custom_files"][0]["audio_id"] == "shower_running" {
+            
             // Set success label!
-            successLabel.text = "I heard the shower!"
+            successLabel.text = "I hear you're showering!"
             
             // Query for user, and then his/her shower configuration
             var username = PFUser.currentUser()?.username
