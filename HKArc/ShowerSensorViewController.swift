@@ -111,19 +111,25 @@ class ShowerSensorViewController: UIViewController {
             if json["status"]["msg"] == "No result" {
                 
                 if !showerStartedFlag {
+                    // Shower still hasn't started
                     successLabel.text = "Did you start the shower?"
                 }
                 else {
                     // Shower stopped
                     successLabel.text = "Nice you finished the shower!"
+                    
+                    // Calculated how long shower occured for
                     var endTime = CFAbsoluteTimeGetCurrent()
                     var elapseTime = endTime - startTime
                     var elapseInt = Int(elapseTime)
-                    println("You showered for \(elapseInt) seconds.")
+                    println("You showered for \(elapseInt) seconds total.")
+                    
+                    // Stop recording
                     client.stopRecordRec()
                     
+                    // If shower was less than configured time, then stop the timer from firing
                     if elapseInt < timeToAlert {
-                        println("Removed timer")
+                        println("Stopped timer from firing!")
                         timer.invalidate()
                     }
                 }
