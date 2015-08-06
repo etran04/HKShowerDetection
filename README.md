@@ -1,9 +1,8 @@
 # HKShowerDetection
 Background iOS application in Swift that picks up on shower noise. 
 
-STILL A WORK IN PROGRESS!
+Use case scenario 2 of IoT demo
 --------
-Use case scenario 2 of IoT demo. 
 1. Phone listens in the background for 'shower noise'
 2. Once it picks up noise, starts timer.
 3. If timer exceeds shower configurated time, triggers event in cloud.
