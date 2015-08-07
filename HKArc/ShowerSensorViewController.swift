@@ -115,17 +115,19 @@ class ShowerSensorViewController: UIViewController {
                 else {
                     // Calculated how long shower occured for
                     var elapseTime = CACurrentMediaTime() - startTime
-                    var elapseInt = Int(elapseTime)
-                    println("You showered for \(elapseInt) seconds total.")
+                    var totalElapseSeconds = Int(elapseTime)
+                    var elapseMins = totalElapseSeconds / 60
+                    var elapseSeconds = totalElapseSeconds % 60
                     
                     // Shower stopped labeled
-                    successLabel.text = "You showered for \(elapseInt) seconds!"
+                    println("You showered for \(elapseMins) minutes and \(elapseSeconds) seconds!")
+                    successLabel.text = "You showered for \(elapseMins) minutes and \(elapseSeconds) seconds!"
                     
                     // Stop recording
                     client.stopRecordRec()
                     
                     // If shower was less than configured time, then stop the timer from firing
-                    if elapseInt < timeToAlert {
+                    if totalElapseSeconds < timeToAlert {
                         println("Stopped timer from firing!")
                         timer.invalidate()
                     }
@@ -154,7 +156,7 @@ class ShowerSensorViewController: UIViewController {
         }
     }
 
-    /* Helper methodfor querying for the user to get shower config data, and starting the timer */
+    /* Helper method for querying for the user to get shower config data, and starting the timer */
     func prepTimer() {
         // Query for user, and then his/her shower configuration
         var username = PFUser.currentUser()?.username
@@ -190,10 +192,19 @@ class ShowerSensorViewController: UIViewController {
      */
     func triggerEventInCloud() {
         
-        var username = PFUser.currentUser()?.username;
+        var username = PFUser.currentUser()?.username
+        var timeString: String!
+        if timeToAlert < 60 {
+            timeString = String(timeToAlert) + "+seconds."
+        }
+        else {
+            var minutes = timeToAlert / 60
+            var seconds = timeToAlert % 60
+            timeString = String(minutes) + "+minutes+and+" + String(seconds) + "seconds."
+        }
         
-        // Send event to Harman IoT Cloud to send a push notification to HKRules
-        PFCloud.callFunctionInBackground("showerStarted", withParameters: ["username":username!]) {
+        // Trigger event in Parse Cloud to send a push notification to HKRules
+        PFCloud.callFunctionInBackground("showerStarted", withParameters: ["username":username!, "timeInSeconds":timeString!]) {
             (response: AnyObject?, error: NSError?) -> Void in
             if error != nil {
                 println("Error with triggering event.")
