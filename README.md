@@ -14,9 +14,8 @@ Features implemented in application
 1. Able to confirm if the shower is running by checking background noise in comparison to ACRCloud database of custom files.
 2. Starts a timer on client side, if it exceeds shower configurated time, then trigger even in cloud.
 3. Cloud event sends push notification to HKRules application. 
-4. 
+4. Implement functionality for handling push notification in HKRules application. 
+5. Use TTS and play to Omni.
 
 To do list
 -------
-1. Implement functionality for handling push notification in HKRules application. 
-2. Use TTS and play to Omni.
