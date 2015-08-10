@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		070D814E1B792EA700FA622E /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 070D814D1B792EA700FA622E /* Social.framework */; };
+		070D81501B792EAD00FA622E /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 070D814F1B792EAD00FA622E /* Accounts.framework */; };
 		073BD1091B7140E2006C0588 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 073BD1081B7140E2006C0588 /* Parse.framework */; };
 		073BD10B1B7140E7006C0588 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 073BD10A1B7140E7006C0588 /* Bolts.framework */; };
 		073BD10D1B714111006C0588 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 073BD10C1B714111006C0588 /* CFNetwork.framework */; };
@@ -17,7 +19,7 @@
 		073BD1171B714140006C0588 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 073BD1161B714140006C0588 /* SystemConfiguration.framework */; };
 		073BD1191B714149006C0588 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 073BD1181B714149006C0588 /* libz.dylib */; };
 		073BD11B1B714155006C0588 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 073BD11A1B714155006C0588 /* libsqlite3.dylib */; };
-		073BD11D1B715D2B006C0588 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 073BD11C1B715D2B006C0588 /* LoginViewController.swift */; };
+		073BD11D1B715D2B006C0588 /* ParseLoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 073BD11C1B715D2B006C0588 /* ParseLoginVC.swift */; };
 		0748615B1B6C45D900798B19 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0748615A1B6C45D900798B19 /* AppDelegate.swift */; };
 		0748615D1B6C45D900798B19 /* ShowerSensorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0748615C1B6C45D900798B19 /* ShowerSensorViewController.swift */; };
 		074861621B6C45D900798B19 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 074861611B6C45D900798B19 /* Images.xcassets */; };
@@ -33,6 +35,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		070D814D1B792EA700FA622E /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
+		070D814F1B792EAD00FA622E /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		073BD1081B7140E2006C0588 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		073BD10A1B7140E7006C0588 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		073BD10C1B714111006C0588 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
@@ -43,7 +47,7 @@
 		073BD1161B714140006C0588 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		073BD1181B714149006C0588 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		073BD11A1B714155006C0588 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
-		073BD11C1B715D2B006C0588 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		073BD11C1B715D2B006C0588 /* ParseLoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseLoginVC.swift; sourceTree = "<group>"; };
 		074861551B6C45D900798B19 /* HKShowerDetection.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HKShowerDetection.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		074861591B6C45D900798B19 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0748615A1B6C45D900798B19 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -71,6 +75,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				070D81501B792EAD00FA622E /* Accounts.framework in Frameworks */,
+				070D814E1B792EA700FA622E /* Social.framework in Frameworks */,
 				073BD11B1B714155006C0588 /* libsqlite3.dylib in Frameworks */,
 				073BD1191B714149006C0588 /* libz.dylib in Frameworks */,
 				073BD1171B714140006C0588 /* SystemConfiguration.framework in Frameworks */,
@@ -100,9 +106,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		070D814C1B792E3900FA622E /* VCs */ = {
+			isa = PBXGroup;
+			children = (
+				073BD11C1B715D2B006C0588 /* ParseLoginVC.swift */,
+				0748615C1B6C45D900798B19 /* ShowerSensorViewController.swift */,
+			);
+			name = VCs;
+			sourceTree = "<group>";
+		};
 		073BD1071B7140B2006C0588 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				070D814F1B792EAD00FA622E /* Accounts.framework */,
+				070D814D1B792EA700FA622E /* Social.framework */,
 				079867F51B716F3700307799 /* ParseUI.framework */,
 				073BD1081B7140E2006C0588 /* Parse.framework */,
 				073BD10A1B7140E7006C0588 /* Bolts.framework */,
@@ -148,11 +165,8 @@
 				074861611B6C45D900798B19 /* Images.xcassets */,
 				074861631B6C45D900798B19 /* LaunchScreen.xib */,
 				074861C51B6FE21400798B19 /* Main.storyboard */,
-				0748617A1B6C45EC00798B19 /* Bridging-Header.h */,
 				0748615A1B6C45D900798B19 /* AppDelegate.swift */,
-				0748615C1B6C45D900798B19 /* ShowerSensorViewController.swift */,
-				073BD11C1B715D2B006C0588 /* LoginViewController.swift */,
-				0748622C1B6FEBFE00798B19 /* SwiftyJSON.swift */,
+				070D814C1B792E3900FA622E /* VCs */,
 				074861581B6C45D900798B19 /* Supporting Files */,
 			);
 			path = HKArc;
@@ -161,6 +175,8 @@
 		074861581B6C45D900798B19 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				0748617A1B6C45EC00798B19 /* Bridging-Header.h */,
+				0748622C1B6FEBFE00798B19 /* SwiftyJSON.swift */,
 				074861591B6C45D900798B19 /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -301,7 +317,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				073BD11D1B715D2B006C0588 /* LoginViewController.swift in Sources */,
+				073BD11D1B715D2B006C0588 /* ParseLoginVC.swift in Sources */,
 				0748622D1B6FEBFE00798B19 /* SwiftyJSON.swift in Sources */,
 				0748615D1B6C45D900798B19 /* ShowerSensorViewController.swift in Sources */,
 				0748615B1B6C45D900798B19 /* AppDelegate.swift in Sources */,
