@@ -20,17 +20,24 @@ class ShowerSensorViewController: UIViewController {
     @IBOutlet weak var resultView: UITextView!
     @IBOutlet weak var stateLabel: UILabel!
     @IBOutlet weak var successLabel: UILabel!
+    @IBOutlet weak var durationLabel: UILabel!
     
     let config = ACRCloudConfig()
     var client: ACRCloudRecognition!
     var showerStarted: Bool!
     var timeToAlert: Int!
-    var timer: NSTimer!
+    
+    var durationTimer: NSTimer!
+    var showerTimer: NSTimer!
     var startTime: NSTimeInterval!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         showerStarted = false
+        logoutBtn.layer.cornerRadius = 10
+        restartBtn.layer.cornerRadius = 10
+        stopBtn.layer.cornerRadius = 10
+        resultView.layer.cornerRadius = 10
         initACRRecorder()
     }
 
@@ -126,10 +133,13 @@ class ShowerSensorViewController: UIViewController {
                     // Stop recording
                     client.stopRecordRec()
                     
+                    // Turn off duration timer
+                    durationTimer.invalidate()
+                    
                     // If shower was less than configured time, then stop the timer from firing
                     if totalElapseSeconds < timeToAlert {
                         println("Stopped timer from firing!")
-                        timer.invalidate()
+                        showerTimer.invalidate()
                     }
                 }
             }
@@ -181,10 +191,11 @@ class ShowerSensorViewController: UIViewController {
 
     /* Helper function for creating and starting timer in the closure */
     func createTimer(secondsTillAlert: Int) {
-            showerStarted = true
-            startTime = CACurrentMediaTime()
-            timeToAlert = secondsTillAlert
-            timer = NSTimer.scheduledTimerWithTimeInterval(NSTimeInterval(secondsTillAlert), target: self, selector: "triggerEventInCloud", userInfo: nil, repeats: false)
+        showerStarted = true
+        startTime = CACurrentMediaTime()
+        timeToAlert = secondsTillAlert
+        showerTimer = NSTimer.scheduledTimerWithTimeInterval(NSTimeInterval(secondsTillAlert), target: self, selector: "triggerEventInCloud", userInfo: nil, repeats: false)
+        durationTimer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: "updateDurationTimer", userInfo: nil, repeats: true)
     }
     
     /* Called when timer has hit user shower config time
@@ -229,6 +240,15 @@ class ShowerSensorViewController: UIViewController {
             self.stateLabel.text = String("State: \(state)")
         });
     }
-
+    
+    /* Helper method for updating the timer label */
+    func updateDurationTimer() {
+        var elapseTime = CACurrentMediaTime() - startTime
+        var totalElapseSeconds = Int(elapseTime)
+        var elapseMins = totalElapseSeconds / 60
+        var elapseSeconds = totalElapseSeconds % 60
+        
+        durationLabel.text = String(format: "%02d", elapseMins) + ":" + String(format: "%02d", elapseSeconds)
+    }
 }
 
