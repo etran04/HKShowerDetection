@@ -1,5 +1,5 @@
 //
-//  LoginViewController.swift
+//  ParseLoginVC.swift
 //  HKShowerDetection
 //
 //  Created by Eric Tan on 8/4/15.
