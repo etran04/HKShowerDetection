@@ -200,11 +200,11 @@ class ShowerSensorViewController: UIViewController {
         else {
             var minutes = timeToAlert / 60
             var seconds = timeToAlert % 60
-            timeString = String(minutes) + "+minutes+and+" + String(seconds) + "seconds."
+            timeString = String(minutes) + "+minutes."
         }
         
         // Trigger event in Parse Cloud to send a push notification to HKRules
-        PFCloud.callFunctionInBackground("showerStarted", withParameters: ["username":username!, "timeInSeconds":timeString!]) {
+        PFCloud.callFunctionInBackground("showerStarted", withParameters: ["username":username!, "showerTime":timeString!]) {
             (response: AnyObject?, error: NSError?) -> Void in
             if error != nil {
                 println("Error with triggering event.")
