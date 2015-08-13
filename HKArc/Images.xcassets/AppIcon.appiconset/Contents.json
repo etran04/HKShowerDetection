@@ -3,37 +3,37 @@
     {
       "size" : "29x29",
       "idiom" : "iphone",
-      "filename" : "shower_icon-5.png",
+      "filename" : "showerIcon-5.png",
       "scale" : "2x"
     },
     {
       "size" : "29x29",
       "idiom" : "iphone",
-      "filename" : "shower_icon-4.png",
+      "filename" : "showerIcon-4.png",
       "scale" : "3x"
     },
     {
       "size" : "40x40",
       "idiom" : "iphone",
-      "filename" : "shower_icon-3.png",
+      "filename" : "showerIcon-3.png",
       "scale" : "2x"
     },
     {
       "size" : "40x40",
       "idiom" : "iphone",
-      "filename" : "shower_icon-2.png",
+      "filename" : "showerIcon-2.png",
       "scale" : "3x"
     },
     {
       "size" : "60x60",
       "idiom" : "iphone",
-      "filename" : "shower_icon.png",
+      "filename" : "showerIcon-1.png",
       "scale" : "2x"
     },
     {
       "size" : "60x60",
       "idiom" : "iphone",
-      "filename" : "shower_icon-1.png",
+      "filename" : "showerIcon.png",
       "scale" : "3x"
     }
   ],

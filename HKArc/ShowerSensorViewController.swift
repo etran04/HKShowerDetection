@@ -31,6 +31,8 @@ class ShowerSensorViewController: UIViewController {
     var showerTimer: NSTimer!
     var startTime: NSTimeInterval!
     
+    var alertCount: Int = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         showerStarted = false
@@ -175,14 +177,14 @@ class ShowerSensorViewController: UIViewController {
         userQuery!.getFirstObjectInBackgroundWithBlock {
             (user: PFObject?, error: NSError?) -> Void in
             if error == nil && user != nil {
-                // Found the user
                 let showerConfigID = (user!["showerConfig"] as! PFObject).objectId
                 var showerQuery = PFQuery(className: "ShowerConfig")
                 showerQuery.getObjectInBackgroundWithId(showerConfigID!) {
                     (config: PFObject?, error: NSError?) -> Void in
                     if error == nil && config != nil {
                         var timeTillAlert: AnyObject? = config?.objectForKey("timeTillAlert")
-                        self.createTimer(timeTillAlert as! Int)
+                        var periodicAlert: AnyObject? = config?.objectForKey("periodicAlert")
+                        self.createTimer(timeTillAlert as! Int, periodicFlag: periodicAlert as! Bool)
                     }
                 }
             }
@@ -190,32 +192,45 @@ class ShowerSensorViewController: UIViewController {
     }
 
     /* Helper function for creating and starting timer in the closure */
-    func createTimer(secondsTillAlert: Int) {
+    func createTimer(secondsTillAlert: Int, periodicFlag: Bool) {
         showerStarted = true
         startTime = CACurrentMediaTime()
         timeToAlert = secondsTillAlert
-        showerTimer = NSTimer.scheduledTimerWithTimeInterval(NSTimeInterval(secondsTillAlert), target: self, selector: "triggerEventInCloud", userInfo: nil, repeats: false)
+        
+        if periodicFlag {
+            showerTimer = NSTimer.scheduledTimerWithTimeInterval(60, target: self, selector: "triggerEventInCloud:", userInfo:periodicFlag, repeats: true)
+        } else {
+            showerTimer = NSTimer.scheduledTimerWithTimeInterval(NSTimeInterval(secondsTillAlert), target: self, selector: "triggerEventInCloud:", userInfo: periodicFlag, repeats: false)
+        }
         durationTimer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: "updateDurationTimer", userInfo: nil, repeats: true)
     }
     
     /* Called when timer has hit user shower config time
      * Triggers event in Parse Cloud to send push notifcation to HKRules application
      */
-    func triggerEventInCloud() {
+    func triggerEventInCloud(timer: NSTimer) {
         
         var username = PFUser.currentUser()?.username
         var timeString: String!
-        if timeToAlert < 60 {
-            timeString = String(timeToAlert) + "+seconds."
+        
+        if timer.userInfo as! Bool {
+            // Periodic alert flag on
+            alertCount++
+            var currentTimeInMinutes = (60 * alertCount) / 60
+            timeString = String(currentTimeInMinutes) + " minutes.".stringByReplacingOccurrencesOfString(" ", withString: "%20")
+            
+            if (timeToAlert / 60) == alertCount {
+                timeString = timeString + " You have showered for your preferred maximum time. ".stringByReplacingOccurrencesOfString(" ", withString: "%20")
+                showerTimer.invalidate()
+            }
         }
         else {
             var minutes = timeToAlert / 60
-            var seconds = timeToAlert % 60
             timeString = String(minutes) + "+minutes."
         }
         
         // Trigger event in Parse Cloud to send a push notification to HKRules
-        PFCloud.callFunctionInBackground("showerStarted", withParameters: ["username":username!, "showerTime":timeString!]) {
+        PFCloud.callFunctionInBackground("showerAlert", withParameters: ["username":username!, "showerTime":timeString!]) {
             (response: AnyObject?, error: NSError?) -> Void in
             if error != nil {
                 println("Error with triggering event.")
