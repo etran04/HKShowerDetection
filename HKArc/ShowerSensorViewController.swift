@@ -217,16 +217,16 @@ class ShowerSensorViewController: UIViewController {
             // Periodic alert flag on
             alertCount++
             var currentTimeInMinutes = (60 * alertCount) / 60
-            timeString = String(currentTimeInMinutes) + " minutes.".stringByReplacingOccurrencesOfString(" ", withString: "%20")
+            timeString = String(currentTimeInMinutes) + " minutes.";
             
             if (timeToAlert / 60) == alertCount {
-                timeString = timeString + " You have showered for your preferred maximum time. ".stringByReplacingOccurrencesOfString(" ", withString: "%20")
+                timeString = timeString + " You have showered for your preferred maximum time.";
                 showerTimer.invalidate()
             }
         }
         else {
             var minutes = timeToAlert / 60
-            timeString = String(minutes) + "+minutes."
+            timeString = String(minutes) + " minutes."
         }
         
         // Trigger event in Parse Cloud to send a push notification to HKRules
