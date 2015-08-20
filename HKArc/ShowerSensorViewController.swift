@@ -13,7 +13,6 @@ import CoreFoundation
 
 class ShowerSensorViewController: UIViewController {
 
-    @IBOutlet weak var restartBtn: UIButton!
     @IBOutlet weak var logoutBtn: UIButton!
     @IBOutlet weak var volumeLabel: UILabel!
     @IBOutlet weak var stopBtn: UIButton!
@@ -37,7 +36,6 @@ class ShowerSensorViewController: UIViewController {
         super.viewDidLoad()
         showerStarted = false
         logoutBtn.layer.cornerRadius = 10
-        restartBtn.layer.cornerRadius = 10
         stopBtn.layer.cornerRadius = 10
         resultView.layer.cornerRadius = 10
         initACRRecorder()
@@ -51,11 +49,6 @@ class ShowerSensorViewController: UIViewController {
     @IBAction func logoutPressed(sender: UIButton) {
         client.stopRecordRec()
         PFUser.logOut()
-    }
-    
-    /* Callback for when restart button is pressed */
-    @IBAction func restartPressed(sender: UIButton) {
-        client.startRecordRec()
     }
     
     /* Callback for when stop button is pressed */
