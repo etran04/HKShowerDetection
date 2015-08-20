@@ -142,7 +142,7 @@
         <!--ParseLoginVC-->
         <scene sceneID="J1E-Oo-kWp">
             <objects>
-                <viewController title="ParseLoginVC" id="2ae-DI-1tX" customClass="ParseLoginVC" customModule="HKShowerDetection" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="ParseLoginVC" id="2ae-DI-1tX" customClass="InitialVC" customModule="HKShowerDetection" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Qgz-48-Uhb"/>
                         <viewControllerLayoutGuide type="bottom" id="F0U-OL-6Cf"/>

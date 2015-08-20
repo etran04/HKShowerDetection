@@ -49,6 +49,7 @@ class ShowerSensorViewController: UIViewController {
     
     /* Callback for when logout button is pressed */
     @IBAction func logoutPressed(sender: UIButton) {
+        client.stopRecordRec()
         PFUser.logOut()
     }
     
@@ -119,21 +120,19 @@ class ShowerSensorViewController: UIViewController {
                 
                 if !showerStartedFlag {
                     // Shower still hasn't started
+                    durationLabel.text = "00:00"
                     successLabel.text = "Did you start the shower?"
                 }
                 else {
                     // Calculated how long shower occured for
                     var elapseTime = CACurrentMediaTime() - startTime
                     var totalElapseSeconds = Int(elapseTime)
-                    var elapseMins = totalElapseSeconds / 60
-                    var elapseSeconds = totalElapseSeconds % 60
                     
                     // Shower stopped labeled
-                    println("You showered for \(elapseMins) minutes and \(elapseSeconds) seconds!")
-                    successLabel.text = "You showered for \(elapseMins) minutes and \(elapseSeconds) seconds!"
+                    successLabel.text = "You finished showering!"
                     
                     // Stop recording
-                    client.stopRecordRec()
+                    // client.stopRecordRec()
                     
                     // Turn off duration timer
                     durationTimer.invalidate()
@@ -143,6 +142,7 @@ class ShowerSensorViewController: UIViewController {
                         println("Stopped timer from firing!")
                         showerTimer.invalidate()
                     }
+                    self.showerStarted = false
                 }
             }
             else if json["status"]["msg"] == "Success" {
