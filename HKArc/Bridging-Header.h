@@ -11,5 +11,6 @@
 
 #import "ACRCloudConfig.h"
 #import "ACRCloudRecognition.h" 
+#import "Heap.h"
 
 #endif

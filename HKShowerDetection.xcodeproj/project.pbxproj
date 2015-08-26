@@ -35,6 +35,10 @@
 		076F6C721B8660D50061B347 /* ParseSignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 076F6C711B8660D50061B347 /* ParseSignUpVC.swift */; };
 		076F6C741B8662030061B347 /* Harman_Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 076F6C731B8662030061B347 /* Harman_Logo.png */; };
 		079867F61B716F3700307799 /* ParseUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 079867F51B716F3700307799 /* ParseUI.framework */; };
+		07B664261B8E85550090FB9E /* libHeap.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 07B664251B8E85550090FB9E /* libHeap.a */; };
+		07B664281B8E85910090FB9E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07B664271B8E85910090FB9E /* Foundation.framework */; };
+		07B6642A1B8E85A20090FB9E /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 07B664291B8E85A20090FB9E /* libicucore.dylib */; };
+		07B6642C1B8E85BA0090FB9E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07B6642B1B8E85BA0090FB9E /* UIKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -74,6 +78,11 @@
 		076F6C711B8660D50061B347 /* ParseSignUpVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseSignUpVC.swift; sourceTree = "<group>"; };
 		076F6C731B8662030061B347 /* Harman_Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Harman_Logo.png; sourceTree = "<group>"; };
 		079867F51B716F3700307799 /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseUI.framework; sourceTree = "<group>"; };
+		07B664241B8E85550090FB9E /* Heap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Heap.h; sourceTree = "<group>"; };
+		07B664251B8E85550090FB9E /* libHeap.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libHeap.a; sourceTree = "<group>"; };
+		07B664271B8E85910090FB9E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		07B664291B8E85A20090FB9E /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
+		07B6642B1B8E85BA0090FB9E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,10 +90,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				07B6642C1B8E85BA0090FB9E /* UIKit.framework in Frameworks */,
+				07B6642A1B8E85A20090FB9E /* libicucore.dylib in Frameworks */,
+				07B664281B8E85910090FB9E /* Foundation.framework in Frameworks */,
 				070D81501B792EAD00FA622E /* Accounts.framework in Frameworks */,
 				070D814E1B792EA700FA622E /* Social.framework in Frameworks */,
 				073BD11B1B714155006C0588 /* libsqlite3.dylib in Frameworks */,
 				073BD1191B714149006C0588 /* libz.dylib in Frameworks */,
+				07B664261B8E85550090FB9E /* libHeap.a in Frameworks */,
 				073BD1171B714140006C0588 /* SystemConfiguration.framework in Frameworks */,
 				073BD1151B714138006C0588 /* StoreKit.framework in Frameworks */,
 				073BD1131B714125006C0588 /* QuartzCore.framework in Frameworks */,
@@ -126,6 +139,9 @@
 		073BD1071B7140B2006C0588 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				07B6642B1B8E85BA0090FB9E /* UIKit.framework */,
+				07B664291B8E85A20090FB9E /* libicucore.dylib */,
+				07B664271B8E85910090FB9E /* Foundation.framework */,
 				070D814F1B792EAD00FA622E /* Accounts.framework */,
 				070D814D1B792EA700FA622E /* Social.framework */,
 				079867F51B716F3700307799 /* ParseUI.framework */,
@@ -150,6 +166,7 @@
 		0748614C1B6C45D900798B19 = {
 			isa = PBXGroup;
 			children = (
+				07B6642D1B8E86000090FB9E /* Heap API */,
 				074861BB1B6C4AFC00798B19 /* ACRCloudLibraies */,
 				074861571B6C45D900798B19 /* HKArc */,
 				0748616D1B6C45D900798B19 /* HKArcTests */,
@@ -224,6 +241,15 @@
 				074861BE1B6C4AFC00798B19 /* ACRCloudRecognition.h */,
 			);
 			path = include;
+			sourceTree = "<group>";
+		};
+		07B6642D1B8E86000090FB9E /* Heap API */ = {
+			isa = PBXGroup;
+			children = (
+				07B664241B8E85550090FB9E /* Heap.h */,
+				07B664251B8E85550090FB9E /* libHeap.a */,
+			);
+			name = "Heap API";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -454,6 +480,11 @@
 					"$(PROJECT_DIR)/ACRCloud-ios-sdk-1.1.0/ACRCloudDemo",
 					"$(PROJECT_DIR)/ACRCloud-ios-sdk-1.1.0/ACRCloudLibraies",
 					"$(PROJECT_DIR)/ACRCloudLibraies",
+					"$(PROJECT_DIR)",
+				);
+				OTHER_LDFLAGS = (
+					"-all_load",
+					"-ObjC",
 				);
 				PRODUCT_NAME = HKShowerDetection;
 				SWIFT_OBJC_BRIDGING_HEADER = "HKArc/Bridging-Header.h";
@@ -476,6 +507,11 @@
 					"$(PROJECT_DIR)/ACRCloud-ios-sdk-1.1.0/ACRCloudDemo",
 					"$(PROJECT_DIR)/ACRCloud-ios-sdk-1.1.0/ACRCloudLibraies",
 					"$(PROJECT_DIR)/ACRCloudLibraies",
+					"$(PROJECT_DIR)",
+				);
+				OTHER_LDFLAGS = (
+					"-all_load",
+					"-ObjC",
 				);
 				PRODUCT_NAME = HKShowerDetection;
 				SWIFT_OBJC_BRIDGING_HEADER = "HKArc/Bridging-Header.h";
